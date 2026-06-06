@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - MediAssist AI</title>
+    <!-- Tailwind CSS v4 CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- Font Awesome for sleek modern icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #FAFAF9;
+            color: #0F172A;
+        }
+        /* Custom scrollbar styling for seamless look */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #E7E5E4;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #D6D3D1;
+        }
+    </style>
+</head>
+<body class="antialiased min-h-screen flex flex-col pt-20">
+
+    <!-- NAVIGATION BAR -->
+    <nav class="fixed top-0 left-0 right-0 bg-white/70 backdrop-blur-xl border-b border-stone-200/50 z-50">
+        <div class="w-full px-4 sm:px-6 h-20 flex items-center justify-between">
+            <!-- Brand Logo Alignment -->
+<div class="flex items-center gap-3 group cursor-pointer pl-1 sm:pl-2">
+    <div class="bg-[#059669] text-white p-2.5 rounded-2xl shadow-lg shadow-emerald-600/20 group-hover:scale-105 transition-transform">
+        <i class="fa-solid fa-notes-medical text-xl"></i>
+    </div>
+    <span class="text-xl font-extrabold tracking-tight text-[#0F172A]">
+        MediAssist <span class="bg-gradient-to-r from-[#059669] to-[#10B981] bg-clip-text text-transparent">AI</span>
+    </span>
+</div>
+            
+            <!-- User Status / Actions -->
+            <div class="flex items-center gap-4">
+                <div class="hidden sm:flex flex-col text-right">
+                    <span class="text-xs text-stone-400 font-bold uppercase tracking-wider">Secure Session</span>
+                    <span class="text-sm font-semibold text-[#0F172A]">Patient Workspace</span>
+                </div>
+                <div class="w-10 h-10 bg-emerald-50 rounded-xl flex items-center justify-center text-[#059669] font-bold border border-emerald-100">
+                    <i class="fa-solid fa-user-shield"></i>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- DASHBOARD CONTAINER GRID -->
+    <main class="flex-1 max-w-7xl w-full mx-auto p-4 sm:p-6 lg:p-8 grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+        
+        <!-- LEFT PANEL: FILE UPLOAD & REPORT ANALYSIS (7/12 width) -->
+        <div class="lg:col-span-7 space-y-6">
+            
+            <!-- SECTION 1: REPORT UPLOADER -->
+            <div class="bg-white border border-stone-200/60 p-6 rounded-[2rem] shadow-xl shadow-stone-200/20">
+                <h2 class="text-lg font-bold text-[#0F172A] mb-4 flex items-center gap-2">
+                    <i class="fa-solid fa-cloud-arrow-up text-[#059669]"></i> Upload Medical Files
+                </h2>
+                
+                <div class="border-2 border-dashed border-stone-200 hover:border-[#059669] transition-colors rounded-2xl p-8 text-center bg-stone-50/50 cursor-pointer group">
+                    <input type="file" id="file-upload" class="hidden" accept=".pdf,.png,.jpg,.jpeg" />
+                    <label for="file-upload" class="cursor-pointer space-y-3 block">
+                        <div class="w-12 h-12 bg-emerald-50 text-[#059669] rounded-xl flex items-center justify-center mx-auto text-xl transition-transform group-hover:scale-110">
+                            <i class="fa-solid fa-file-medical"></i>
+                        </div>
+                        <div class="space-y-1">
+                            <p class="text-sm font-bold text-[#0F172A]">Drag & drop your file here, or <span class="text-[#059669] underline">browse</span></p>
+                            <p class="text-xs text-stone-400 font-medium">Supports PDF, PNG, JPG (Max 15MB)</p>
+                        </div>
+                    </label>
+                </div>
+                
+                <!-- Uploading Status (Simulated / Hidden by default) -->
+                <div class="mt-4 p-3 bg-stone-50 rounded-xl border border-stone-100 flex items-center justify-between hidden" id="upload-progress">
+                    <div class="flex items-center gap-3 min-w-0">
+                        <i class="fa-solid fa-file-pdf text-red-500 text-xl"></i>
+                        <div class="truncate">
+                            <p class="text-xs font-bold text-[#0F172A] truncate">patient_blood_report.pdf</p>
+                            <p class="text-[10px] text-stone-400 font-semibold uppercase">Analyzing features...</p>
+                        </div>
+                    </div>
+                    <div class="w-16 bg-stone-200 h-1.5 rounded-full overflow-hidden">
+                        <div class="bg-[#059669] h-full w-2/3 rounded-full animate-pulse"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECTION 2: AI METRIC DECODER -->
+            <div class="bg-white border border-stone-200/60 p-6 rounded-[2rem] shadow-xl shadow-stone-200/20">
+                <div class="flex items-center justify-between mb-4">
+                    <h2 class="text-lg font-bold text-[#0F172A] flex items-center gap-2">
+                        <i class="fa-solid fa-square-poll-vertical text-[#059669]"></i> Extracted Parameters
+                    </h2>
+                    <span class="text-xs font-bold bg-emerald-50 text-[#059669] border border-emerald-100 px-2.5 py-1 rounded-full">
+                        2 Flags Raised
+                    </span>
+                </div>
+
+                <!-- Structured Parameter Grid Table -->
+                <div class="overflow-hidden border border-stone-100 rounded-2xl">
+                    <table class="w-full text-left border-collapse">
+                        <thead>
+                            <tr class="bg-stone-50 text-stone-400 text-xs font-bold uppercase tracking-wider border-b border-stone-100">
+                                <th class="p-4">Biomarker</th>
+                                <th class="p-4">Your Value</th>
+                                <th class="p-4">Reference Range</th>
+                                <th class="p-4 text-right">Status</th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-sm font-medium divide-y divide-stone-100 text-[#0F172A]">
+                            <tr>
+                                <td class="p-4 font-bold">Hemoglobin (Hb)</td>
+                                <td class="p-4 text-amber-600 font-bold">11.2 g/dL</td>
+                                <td class="p-4 text-stone-400">13.0 - 17.0 g/dL</td>
+                                <td class="p-4 text-right">
+                                    <span class="inline-flex items-center gap-1 text-xs bg-amber-50 text-amber-700 font-bold px-2 py-0.5 rounded-md">
+                                        <i class="fa-solid fa-arrow-trend-down"></i> Low
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="p-4 font-bold">White Blood Cells (WBC)</td>
+                                <td class="p-4">6,500 /µL</td>
+                                <td class="p-4 text-stone-400">4,000 - 11,000 /µL</td>
+                                <td class="p-4 text-right">
+                                    <span class="inline-flex items-center gap-1 text-xs bg-emerald-50 text-emerald-700 font-bold px-2 py-0.5 rounded-md">
+                                        <i class="fa-solid fa-circle-check"></i> Normal
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="p-4 font-bold">Vitamin D3</td>
+                                <td class="p-4 text-red-600 font-bold">18.5 ng/mL</td>
+                                <td class="p-4 text-stone-400">30.0 - 100.0 ng/mL</td>
+                                <td class="p-4 text-right">
+                                    <span class="inline-flex items-center gap-1 text-xs bg-red-50 text-red-700 font-bold px-2 py-0.5 rounded-md">
+                                        <i class="fa-solid fa-triangle-exclamation"></i> Deficient
+                                    </span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- RIGHT PANEL: MULTILINGUAL HEALTH SUMMARY & CHAT ENGINE (5/12 width) -->
+        <div class="lg:col-span-5 space-y-6 lg:sticky lg:top-26">
+            
+            <!-- SECTION 3: BILINGUAL AI INSIGHT WRAPPER -->
+            <div class="bg-gradient-to-br from-emerald-950 to-teal-950 text-white p-6 rounded-[2rem] shadow-2xl relative overflow-hidden">
+                <div class="absolute -top-10 -right-10 w-32 h-32 bg-[#10B981]/10 rounded-full blur-2xl"></div>
+                
+                <div class="flex items-center justify-between border-b border-white/10 pb-4 mb-4">
+                    <div class="flex items-center gap-2">
+                        <div class="bg-[#059669] text-white p-2 rounded-xl text-xs shadow-md">
+                            <i class="fa-solid fa-wand-magic-sparkles"></i>
+                        </div>
+                        <h3 class="font-extrabold text-sm tracking-tight">AI Diagnostic Overview</h3>
+                    </div>
+                    <span class="text-[10px] bg-white/10 border border-white/20 text-emerald-300 font-bold uppercase tracking-widest px-2.5 py-0.5 rounded-full">
+                        Tamil & Eng
+                    </span>
+                </div>
+
+                <div class="space-y-4">
+                    <!-- English Translation -->
+                    <div class="space-y-1">
+                        <span class="text-[10px] uppercase font-bold text-emerald-400 tracking-wider block">English Summary</span>
+                        <p class="text-sm text-stone-200 font-medium leading-relaxed">
+                            Your core results indicate <span class="text-amber-300 font-bold">mild anemia</span> driven by lower Hemoglobin counts alongside a critical <span class="text-red-300 font-bold">Vitamin D3 deficiency</span>. Other metabolic and WBC parameters reside inside standard references.
+                        </p>
+                    </div>
+
+                    <div class="border-t border-white/5 pt-3"></div>
+
+                    <!-- Tamil Translation -->
+                    <div class="space-y-1">
+                        <span class="text-[10px] uppercase font-bold text-teal-400 tracking-wider block">தமிழ் விளக்கம் (Tamil Summary)</span>
+                        <p class="text-sm text-stone-200 font-medium leading-relaxed italic">
+                            உங்களது இரத்த சிவப்பணுக்களின் அளவு (Hemoglobin) மற்றும் வைட்டமின் D3 அளவு சற்றுக் குறைவாக உள்ளது. மற்ற முக்கிய உடற்கூறு அளவுகள் அனைத்தும் இயல்பான எல்லைக்குள் சீராக அமைந்துள்ளன.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECTION 4: INTERACTIVE AI HEALTH COMPANION INTERFACE -->
+            <div class="bg-white border border-stone-200/60 rounded-[2rem] shadow-xl shadow-stone-200/20 flex flex-col h-[420px] overflow-hidden">
+                <!-- Chat Head -->
+                <div class="p-4 border-b border-stone-100 flex items-center gap-3 bg-stone-50/50">
+                    <div class="w-8 h-8 rounded-xl bg-emerald-50 text-[#059669] flex items-center justify-center text-sm border border-emerald-100">
+                        <i class="fa-solid fa-robot"></i>
+                    </div>
+                    <div>
+                        <h4 class="text-xs font-extrabold text-[#0F172A]">MediAssist Assistant</h4>
+                        <p class="text-[10px] text-stone-400 font-semibold flex items-center gap-1">
+                            <span class="w-1.5 h-1.5 bg-emerald-500 rounded-full animate-ping"></span> Ready to translate & explain
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Chat Body Message Pipeline -->
+                <div class="flex-1 p-4 overflow-y-auto space-y-4 text-xs font-medium">
+                    <!-- Incoming Assistant Message -->
+                    <div class="flex items-start gap-2 max-w-[85%]">
+                        <div class="bg-stone-100 text-stone-700 p-3 rounded-2xl rounded-tl-sm leading-relaxed">
+                            Hello! I have fully processed your diagnostic reports. Feel free to ask any clarifying questions about these metrics in English or தமிழ்.
+                        </div>
+                    </div>
+
+                    <!-- Outgoing User Message -->
+                    <div class="flex items-start gap-2 max-w-[85%] ml-auto justify-end">
+                        <div class="bg-[#059669] text-white p-3 rounded-2xl rounded-tr-sm leading-relaxed shadow-md shadow-emerald-700/10">
+                            What foods can I eat to fix my low Vitamin D3 and Hemoglobin?
+                        </div>
+                    </div>
+
+                    <!-- Incoming Assistant Reply -->
+                    <div class="flex items-start gap-2 max-w-[85%]">
+                        <div class="bg-stone-100 text-stone-700 p-3 rounded-2xl rounded-tl-sm leading-relaxed space-y-2">
+                            <p>To boost your parameters, prioritize:</p>
+                            <ul class="list-disc pl-4 space-y-1">
+                                <li><strong class="text-[#059669]">Iron / Hb:</strong> Spinach (கீரை), pomegranates, beetroot, and red meat.</li>
+                                <li><strong class="text-[#059669]">Vitamin D3:</strong> Egg yolks, mushrooms, dairy products, and morning sunlight.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Chat Input Tray -->
+                <div class="p-3 border-t border-stone-100 bg-stone-50/30">
+                    <form class="flex items-center gap-2 bg-white border border-stone-200 p-1.5 rounded-xl shadow-inner">
+                        <input type="text" placeholder="Type message in English or தமிழ்..." class="flex-1 text-xs px-2 py-1.5 outline-none font-medium text-[#0F172A]" />
+                        <button type="submit" class="bg-[#059669] hover:bg-[#047857] text-white w-8 h-8 rounded-lg flex items-center justify-center transition-colors cursor-pointer">
+                            <i class="fa-solid fa-paper-plane text-xs"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- FOOTER BAR -->
+    <footer class="border-t border-stone-200/60 py-6 bg-stone-50 mt-12">
+        <div class="max-w-7xl w-full mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-stone-400 font-medium">
+            <div class="flex items-center gap-2">
+                <span class="font-extrabold text-[#0F172A] tracking-tight">MediAssist<span class="text-[#059669]">AI</span></span>
+            </div>
+            <p>&copy; 2026 MediAssist AI. Secure Data Framework.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

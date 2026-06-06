@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MediAssist AI - Decode Your Medical Reports with Confidence</title>
+    <!-- Tailwind CSS v4 CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- Font Awesome for sleek modern icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #FAFAF9;
+            color: #0F172A;
+        }
+        /* Lock scrolling while loading */
+        body.loading {
+            overflow: hidden;
+        }
+        /* Slower loading progress bar slide */
+        @keyframes gentle-load {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+        .animate-linear-progress {
+            animation: gentle-load 2.8s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body class="antialiased overflow-x-hidden loading">
+
+    <!-- CLEAN PRELOADER ANIMATION -->
+    <div id="preloader" class="fixed inset-0 bg-[#FAFAF9] z-[100] flex flex-col items-center justify-center transition-all duration-[1200ms] ease-in-out">
+        <div class="relative flex flex-col items-center">
+            <!-- Glowing Pulsing Icon Core -->
+            <div class="relative mb-6">
+                <div class="absolute inset-0 bg-[#059669]/20 rounded-2xl blur-xl animate-ping [animation-duration:3s] opacity-75"></div>
+                <div class="relative bg-[#059669] text-white w-16 h-16 rounded-2xl shadow-xl shadow-emerald-600/30 flex items-center justify-center animate-pulse [animation-duration:2.5s]">
+                    <i class="fa-solid fa-notes-medical text-2xl"></i>
+                </div>
+            </div>
+            
+            <!-- Branding Text -->
+            <h2 class="text-xl font-extrabold tracking-tight text-[#0F172A] mb-3">
+                MediAssist <span class="bg-gradient-to-r from-[#059669] to-[#10B981] bg-clip-text text-transparent">AI</span>
+            </h2>
+            
+            <!-- Sleek Linear Progress Bar Tracker -->
+            <div class="w-32 h-[3px] bg-stone-200 rounded-full overflow-hidden relative">
+                <div class="h-full bg-gradient-to-r from-[#059669] to-[#10B981] rounded-full w-4/5 animate-linear-progress"></div>
+            </div>
+            <p class="text-[11px] text-stone-400 font-semibold uppercase tracking-widest mt-3 animate-pulse [animation-duration:2s]">Securing Environment</p>
+        </div>
+    </div>
+
+    <!-- MAIN HOMEPAGE CONTENT WRAPPER -->
+    <div id="app-content" class="opacity-0 translate-y-6 transition-all duration-[1500ms] ease-out">
+        
+        <!-- NAVBAR (Logo snapped precisely to the top left corner via padding overrides) -->
+        <nav class="fixed top-0 left-0 right-0 bg-white/70 backdrop-blur-xl border-b border-stone-200/50 z-50 transition-all">
+            <div class="w-full px-4 sm:px-6 h-20 flex items-center justify-between">
+                <!-- Logo area: Perfectly configured for absolute top-left optical alignment -->
+                <div class="flex items-center gap-3 group cursor-pointer pl-1 sm:pl-2">
+                    <div class="bg-[#059669] text-white p-2.5 rounded-2xl shadow-lg shadow-emerald-600/20 group-hover:scale-105 transition-transform">
+                        <i class="fa-solid fa-notes-medical text-xl"></i>
+                    </div>
+                    <span class="text-xl font-extrabold tracking-tight text-[#0F172A]">
+                        MediAssist <span class="bg-gradient-to-r from-[#059669] to-[#10B981] bg-clip-text text-transparent">AI</span>
+                    </span>
+                </div>
+            
+            </div>
+        </nav>
+
+        <!-- HERO SECTION -->
+        <section class="relative pt-40 pb-24 md:pt-48 md:pb-32 overflow-hidden">
+            <div class="absolute top-24 -left-20 w-96 h-96 bg-emerald-200/40 rounded-full blur-3xl -z-10"></div>
+            <div class="absolute top-40 right-0 w-80 h-80 bg-emerald-100/50 rounded-full blur-3xl -z-10"></div>
+
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-8 items-center">
+                    
+                    <!-- Left Narrative Content -->
+                    <div class="lg:col-span-7 space-y-8 text-center lg:text-left">
+                        <div class="inline-flex items-center gap-2 bg-emerald-50 border border-emerald-100/80 text-[#059669] font-bold text-xs uppercase tracking-wider px-4 py-2 rounded-full shadow-sm">
+                            <span></span>Multilingual Medical AI
+                        </div>
+                        
+                        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.1] text-[#0F172A]">
+                            Understand Your Medical Reports with <span class="bg-gradient-to-r from-[#059669] to-[#10B981] bg-clip-text text-transparent">Confidence</span>
+                        </h1>
+                        
+                        <p class="text-lg md:text-xl text-stone-500 max-w-2xl mx-auto lg:mx-0 leading-relaxed font-medium">
+                            Upload your medical reports, receive AI-powered health insights, and get explanations in English or Tamil through an intelligent health assistant designed to simplify healthcare information.
+                        </p>
+                        
+                        <div class="pt-2 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+<a href="/dashboard"
+   class="bg-[#059669] text-white px-8 py-4 rounded-2xl">
+   Get Started
+</a>
+                            <a href="#features" class="w-full sm:w-auto text-center bg-white hover:bg-stone-50 border border-stone-200 text-stone-700 font-bold px-8 py-4 rounded-2xl transition-all duration-300 shadow-sm hover:shadow-md">
+                                Learn More
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Right Visual Presentation -->
+                    <div class="lg:col-span-5 relative flex justify-center">
+                        <div class="absolute -inset-4 bg-gradient-to-tr from-[#10B981]/20 to-[#059669]/10 rounded-full blur-2xl opacity-60 -z-10"></div>
+                        
+                        <!-- Dashboard container mockup -->
+                        <div class="relative bg-white border border-stone-200/60 p-8 rounded-[2.5rem] shadow-2xl max-w-md w-full transition-transform hover:scale-[1.02] duration-500">
+                            <div class="flex items-center justify-between border-b border-stone-100 pb-4 mb-6">
+                                <div class="flex items-center gap-2">
+                                    <div class="w-3 h-3 rounded-full bg-stone-200"></div>
+                                    <div class="w-3 h-3 rounded-full bg-stone-200"></div>
+                                    <div class="w-3 h-3 rounded-full bg-stone-200"></div>
+                                </div>
+                                <span class="text-xs font-semibold tracking-wider text-stone-400 uppercase">MediAssist Engine</span>
+                            </div>
+                            
+                            <div class="space-y-4">
+                                <div class="p-4 bg-stone-50 rounded-2xl border border-stone-100 flex items-center gap-4">
+                                    <div class="bg-emerald-50 text-[#059669] p-3 rounded-xl">
+                                        <i class="fa-solid fa-file-invoice-dollar text-xl"></i>
+                                    </div>
+                                    <div class="flex-1 min-w-0">
+                                        <p class="text-sm font-bold text-[#0F172A] truncate">blood_test_results.pdf</p>
+                                        <p class="text-xs text-emerald-600 font-medium">✨ Secured & Parsed</p>
+                                    </div>
+                                    <i class="fa-solid fa-circle-check text-emerald-500 text-lg"></i>
+                                </div>
+                                
+                                <div class="p-5 bg-gradient-to-br from-emerald-50/60 to-teal-50/30 rounded-2xl border border-emerald-100 space-y-3">
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-xs font-extrabold text-[#059669] uppercase tracking-wider">AI Insight</span>
+                                        <span class="text-[10px] bg-emerald-600 text-white font-bold px-2 py-0.5 rounded-full">Tamil & Eng</span>
+                                    </div>
+                                    <p class="text-sm text-[#0F172A] font-semibold leading-relaxed">
+                                        Your Hemoglobin level is <span class="text-amber-600 font-bold">11.2 g/dL</span>, which is slightly below the normal range. 
+                                        <span class="block text-xs text-stone-500 font-normal mt-2 border-t border-emerald-100/60 pt-2 italic">
+                                            உங்களது இரத்த சிவப்பணுக்களின் அளவு சற்று குறைவாக உள்ளது.
+                                        </span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- FEATURES SECTION -->
+        <section id="features" class="py-24 bg-stone-100/60 border-y border-stone-200/40 relative">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="text-center max-w-3xl mx-auto mb-20 space-y-4">
+                    <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight text-[#0F172A]">
+                        Advanced AI Tools to Decode Your Health
+                    </h2>
+                    <div class="w-12 h-1 bg-[#059669] mx-auto rounded-full"></div>
+                    <p class="text-stone-500 text-lg font-medium pt-2">
+                        MediAssist AI transforms complex medical reports into simple, easy-to-understand health insights using OCR, NLP, and Artificial Intelligence.
+                    </p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div class="bg-white p-8 rounded-3xl border border-stone-200/50 shadow-xl shadow-stone-200/30 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-2xl hover:border-emerald-500/20 group">
+                        <div class="w-14 h-14 bg-emerald-50 text-[#059669] rounded-2xl flex items-center justify-center mb-6 text-2xl font-bold group-hover:scale-110 transition-transform">📄</div>
+                        <h3 class="text-xl font-bold mb-2 text-[#0F172A]">Upload Reports</h3>
+                        <p class="text-sm text-stone-500 leading-relaxed font-medium">Upload blood tests, lab reports, and health checkup PDFs securely.</p>
+                    </div>
+                    <div class="bg-white p-8 rounded-3xl border border-stone-200/50 shadow-xl shadow-stone-200/30 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-2xl hover:border-emerald-500/20 group">
+                        <div class="w-14 h-14 bg-emerald-50 text-[#10B981] rounded-2xl flex items-center justify-center mb-6 text-2xl font-bold group-hover:scale-110 transition-transform">🧠</div>
+                        <h3 class="text-xl font-bold mb-2 text-[#0F172A]">AI Analysis</h3>
+                        <p class="text-sm text-stone-500 leading-relaxed font-medium">Automatically identify key health parameters and abnormal values.</p>
+                    </div>
+                    <div class="bg-white p-8 rounded-3xl border border-stone-200/50 shadow-xl shadow-stone-200/30 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-2xl hover:border-emerald-500/20 group">
+                        <div class="w-14 h-14 bg-emerald-50 text-[#059669] rounded-2xl flex items-center justify-center mb-6 text-2xl font-bold group-hover:scale-110 transition-transform">🌐</div>
+                        <h3 class="text-xl font-bold mb-2 text-[#0F172A]">Multilingual Support</h3>
+                        <p class="text-sm text-stone-500 leading-relaxed font-medium">Receive explanations in English and Tamil for better accessibility.</p>
+                    </div>
+                    <div class="bg-white p-8 rounded-3xl border border-stone-200/50 shadow-xl shadow-stone-200/30 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-2xl hover:border-emerald-500/20 group">
+                        <div class="w-14 h-14 bg-emerald-50 text-[#10B981] rounded-2xl flex items-center justify-center mb-6 text-2xl font-bold group-hover:scale-110 transition-transform">🤖</div>
+                        <h3 class="text-xl font-bold mb-2 text-[#0F172A]">AI Health Assistant</h3>
+                        <p class="text-sm text-stone-500 leading-relaxed font-medium">Ask questions about your report and get clear AI-powered explanations.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- HOW IT WORKS SECTION -->
+        <section class="py-24 bg-white">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="text-center max-w-2xl mx-auto mb-20">
+                    <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight text-[#0F172A]">How It Works</h2>
+                    <p class="text-stone-500 font-medium mt-3 text-lg">Three simple steps to bridge the gap between lab metrics and complete clarity.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-16 relative">
+                    <div class="flex flex-col items-center text-center group relative">
+                        <div class="w-20 h-20 rounded-[2rem] bg-emerald-50 text-[#059669] text-2xl font-extrabold flex items-center justify-center border border-emerald-100 shadow-md mb-6 transition-all duration-300 group-hover:bg-[#059669] group-hover:text-white group-hover:rotate-6">1</div>
+                        <h3 class="text-xl font-bold mb-2 text-[#0F172A]">Upload</h3>
+                        <p class="text-stone-500 text-sm max-w-xs leading-relaxed font-medium">Upload your medical report securely in PDF format.</p>
+                    </div>
+                    <div class="flex flex-col items-center text-center group relative">
+                        <div class="w-20 h-20 rounded-[2rem] bg-emerald-50 text-[#10B981] text-2xl font-extrabold flex items-center justify-center border border-emerald-100 shadow-md mb-6 transition-all duration-300 group-hover:bg-[#10B981] group-hover:text-white group-hover:rotate-6">2</div>
+                        <h3 class="text-xl font-bold mb-2 text-[#0F172A]">Analyze</h3>
+                        <p class="text-stone-500 text-sm max-w-xs leading-relaxed font-medium">Our specialized AI extracts and analyzes metrics to locate anomalies.</p>
+                    </div>
+                    <div class="flex flex-col items-center text-center group relative">
+                        <div class="w-20 h-20 rounded-[2rem] bg-emerald-50 text-[#059669] text-2xl font-extrabold flex items-center justify-center border border-emerald-100 shadow-md mb-6 transition-all duration-300 group-hover:bg-[#059669] group-hover:text-white group-hover:rotate-6">3</div>
+                        <h3 class="text-xl font-bold mb-2 text-[#0F172A]">Understand</h3>
+                        <p class="text-stone-500 text-sm max-w-xs leading-relaxed font-medium">Receive simplified, human explanations and chat natively with the AI.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CALL TO ACTION (CTA) SECTION -->
+        <section id="cta" class="py-16 bg-white">
+            <div class="max-w-6xl mx-auto px-6">
+                <div class="bg-gradient-to-br from-[#0B251E] to-[#041E17] rounded-[3rem] p-10 md:p-16 text-center relative overflow-hidden shadow-2xl shadow-emerald-950/40">
+                    <div class="absolute -top-12 -right-12 w-96 h-96 bg-[#10B981]/10 rounded-full blur-3xl"></div>
+                    <div class="absolute -bottom-12 -left-12 w-96 h-96 bg-[#059669]/10 rounded-full blur-3xl"></div>
+                    
+                    <div class="relative z-10 max-w-2xl mx-auto space-y-6">
+                        <h2 class="text-3xl md:text-5xl font-extrabold tracking-tight text-white leading-tight">Ready to understand your health better?</h2>
+                        <p class="text-stone-400 md:text-lg font-medium max-w-xl mx-auto">Get clear, simplified, patient-first health metrics from your files securely right now.</p>
+                        <div class="pt-6">
+<button
+    onclick="window.location.href='/dashboard'"
+    class="bg-gradient-to-r from-[#059669] to-[#10B981]
+           hover:from-[#047857] hover:to-[#059669]
+           text-white font-bold px-10 py-4 rounded-2xl
+           transition-all duration-300
+           shadow-xl shadow-emerald-700/20
+           hover:shadow-emerald-600/40
+           hover:-translate-y-1
+           w-full sm:w-auto cursor-pointer">
+    Get Started
+</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer class="border-t border-stone-200/60 py-10 bg-stone-50">
+            <div class="w-full px-6 flex flex-col sm:flex-row items-center justify-between gap-6 text-sm text-stone-400 font-medium">
+                <div class="flex items-center gap-2 pl-1">
+                    <span class="font-extrabold text-[#0F172A] tracking-tight">MediAssist <span class="text-[#059669]">AI</span></span>
+                </div>
+                <p>&copy; 2026 MediAssist AI. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- DELIBERATE, CINEMATIC TIMEOUT LOADER LOGIC -->
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            setTimeout(() => {
+                const loader = document.getElementById('preloader');
+                const content = document.getElementById('app-content');
+                
+                loader.classList.add('opacity-0', 'scale-98', 'pointer-events-none');
+                document.body.classList.remove('loading');
+                
+                content.classList.remove('opacity-0', 'translate-y-6');
+                content.classList.add('opacity-100', 'translate-y-0');
+                
+                setTimeout(() => { loader.remove(); }, 1200);
+            }, 2600); 
+        });
+    </script>
+</body>
+</html>
