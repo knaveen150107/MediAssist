@@ -5,7 +5,6 @@
 ### Decode Your Medical Reports with Confidence
 
 AI-powered medical report analyzer that transforms complex healthcare reports into clear, understandable insights with multilingual explanations and an interactive health assistant.
-
 <br>
 
 <img src="https://img.shields.io/badge/AI-Powered-059669?style=for-the-badge" />
