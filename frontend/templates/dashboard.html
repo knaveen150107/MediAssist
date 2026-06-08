@@ -73,45 +73,7 @@
                 </h2>
                 
                 <div class="border-2 border-dashed border-stone-200 hover:border-[#059669] transition-colors rounded-2xl p-8 text-center bg-stone-50/50 cursor-pointer group">
-  <form action="/upload"
-      method="POST"
-      enctype="multipart/form-data">
-
-    <input
-        type="file"
-        id="file-upload"
-        name="report"
-        class="hidden"
-        accept=".pdf,.png,.jpg,.jpeg"
-        required
-    />
-
-    <label for="file-upload" class="cursor-pointer space-y-3 block">
-        <div class="w-12 h-12 bg-emerald-50 text-[#059669] rounded-xl flex items-center justify-center mx-auto text-xl transition-transform group-hover:scale-110">
-            <i class="fa-solid fa-file-medical"></i>
-        </div>
-
-        <div class="space-y-1">
-            <p class="text-sm font-bold text-[#0F172A]">
-                Drag & drop your file here, or
-                <span class="text-[#059669] underline">browse</span>
-            </p>
-
-            <p class="text-xs text-stone-400 font-medium">
-                Supports PDF, PNG, JPG (Max 15MB)
-            </p>
-        </div>
-    </label>
-
-    <div class="mt-4 text-center">
-        <button
-            type="submit"
-            class="bg-[#059669] hover:bg-[#047857] text-white font-bold px-6 py-3 rounded-xl transition-all">
-            Upload Report
-        </button>
-    </div>
-
-</form>
+                    <input type="file" id="file-upload" class="hidden" accept=".pdf,.png,.jpg,.jpeg" />
                     <label for="file-upload" class="cursor-pointer space-y-3 block">
                         <div class="w-12 h-12 bg-emerald-50 text-[#059669] rounded-xl flex items-center justify-center mx-auto text-xl transition-transform group-hover:scale-110">
                             <i class="fa-solid fa-file-medical"></i>
@@ -263,15 +225,6 @@
             </div>
 
         </div>
-        {% if extracted_text %}
-<div class="bg-white p-4 rounded-xl mt-4">
-    <h3 class="font-bold">OCR Output</h3>
-
-    <pre class="text-sm mt-2 whitespace-pre-wrap">
-{{ extracted_text }}
-    </pre>
-</div>
-{% endif %}
     </main>
 
     <!-- FOOTER BAR -->
